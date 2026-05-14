@@ -1,26 +1,76 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-background: #0b0f19;
+  --color-foreground: #f3f4f6;
+  --color-muted: #9ca3af;
+
+  --color-surface-900: #0b0f19;
+  --color-surface-800: #111827;
+  --color-surface-700: #1f2937;
+
+  --color-brand-50: #f0f4ff;
+  --color-brand-100: #e0e8ff;
+  --color-brand-200: #c7d6ff;
+  --color-brand-300: #a3beff;
+  --color-brand-400: #7a9eff;
+  --color-brand-500: #4a75ff;
+  --color-brand-600: #264bff;
+  --color-brand-700: #1433f0;
+  --color-brand-800: #152bc2;
+  --color-brand-900: #17299a;
+  --color-brand-950: #0f185c;
+
+  --color-hairline: rgba(255, 255, 255, 0.05);
+  --color-hairline-strong: rgba(255, 255, 255, 0.1);
+
+  --gradient-hero-glow: radial-gradient(
+    circle at center,
+    rgba(38, 75, 255, 0.15) 0%,
+    rgba(11, 15, 25, 1) 70%
+  );
+  --gradient-brand: linear-gradient(135deg, #1433f0 0%, #264bff 100%);
+  --shadow-brand: 0 0 15px rgba(38, 75, 255, 0.4);
+  --shadow-brand-lg: 0 0 30px rgba(38, 75, 255, 0.2);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@utility bg-hero-glow {
+  background-image: var(--gradient-hero-glow);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@utility bg-brand-gradient {
+  background-image: var(--gradient-brand);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: var(--color-brand-500);
+  color: #fff;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  background: var(--color-brand-600);
+  color: #fff;
+  border-radius: 0 0 0.5rem 0;
+}
+
+.skip-link:focus {
+  left: 0;
 }
